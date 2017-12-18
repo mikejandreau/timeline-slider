@@ -39,6 +39,7 @@ function timeline_slider(){
                                 $counter = 0; // Counter for posts
                                 $getThisMany = -1; // Number of posts to pull
                                 $recentPosts = new WP_Query(array(
+                                    'post_type' => 'collection',
                                     'showposts' => $getThisMany, 
                                     'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
                                     'order' => 'ASC', // Puts new posts first, to put oldest posts first, change to 'ASC'
@@ -69,6 +70,7 @@ function timeline_slider(){
                         $timelineCounter = 0; // Counter for posts
                         $timelineGetThisMany = -1; // Number of posts to pull
                         $timelineRecentPosts = new WP_Query(array(
+                            'post_type' => 'collection',
                             'showposts' => $timelineGetThisMany, 
                             'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
                             'order' => 'ASC', // Puts new posts first, to put oldest posts first, change to 'ASC'
