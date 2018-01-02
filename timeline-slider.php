@@ -11,12 +11,14 @@
 *
 */
 
+// Custom post type for Portfolio Items 
+require plugin_dir_path( __FILE__ ) . '/inc/custom-post-timeline-event.php';
+
+// Register styles and scripts
 function timeline_slider_assets() {
-    // Register styles
     wp_register_style('timeline_slider_styles', plugins_url('css/timeline.css',__FILE__ ));
     wp_enqueue_style('timeline_slider_styles');
 
-    // Register scripts
     wp_register_script( 'timeline_slider_mobile', plugins_url('js/jquery.mobile.custom.min.js', __FILE__), array('jquery'),'1.1', true);
     wp_enqueue_script('timeline_slider_mobile');
 
@@ -39,7 +41,7 @@ function timeline_slider(){
                                 $counter = 0; // Counter for posts
                                 $getThisMany = -1; // Number of posts to pull
                                 $recentPosts = new WP_Query(array(
-                                    'post_type' => 'collection',
+                                    'post_type' => 'Timeline',
                                     'showposts' => $getThisMany, 
                                     'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
                                     'order' => 'ASC', // Puts new posts first, to put oldest posts first, change to 'ASC'
@@ -61,7 +63,7 @@ function timeline_slider(){
                     <li><a href="#0" class="prev inactive">Prev</a></li>
                     <li><a href="#0" class="next">Next</a></li>
                 </ul>
-            </div>
+            </div><?php /* /timeline */ ?>
 
             <div class="events-content">
                 <ol>
@@ -70,7 +72,7 @@ function timeline_slider(){
                         $timelineCounter = 0; // Counter for posts
                         $timelineGetThisMany = -1; // Number of posts to pull
                         $timelineRecentPosts = new WP_Query(array(
-                            'post_type' => 'collection',
+                            'post_type' => 'Timeline',
                             'showposts' => $timelineGetThisMany, 
                             'offset' => 0,  // Set this to 1 to skip over first post, 2 to skip the first two, etc.
                             'order' => 'ASC', // Puts new posts first, to put oldest posts first, change to 'ASC'
@@ -90,8 +92,8 @@ function timeline_slider(){
 
                 </ol>
 
-            </div> <!-- .events-content -->
-        </section>
+            </div><?php /* /events-content */ ?>
+        </section><?php /* /horizontal-timeline */ ?>
 
     <?php return ob_get_clean();
 }
