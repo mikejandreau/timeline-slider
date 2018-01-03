@@ -38,6 +38,7 @@ Timeline
 .cd-timeline-navigation a:focus,
 .events-wrapper a:focus {
   outline: none;
+  text-decoration: none;
 }
 .cd-horizontal-timeline .events-wrapper {
   position: relative;
