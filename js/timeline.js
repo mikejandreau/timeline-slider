@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	var timelines = $('.cd-horizontal-timeline'),
+	var timelines = $('.horizontal-timeline'),
 		eventsMinDistance = 60;
 
 	(timelines.length > 0) && initTimeline(timelines);
@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 			timelineComponents['timelineEvents'] = timelineComponents['eventsWrapper'].find('a');
 			timelineComponents['timelineDates'] = parseDate(timelineComponents['timelineEvents']);
 			timelineComponents['eventsMinLapse'] = minLapse(timelineComponents['timelineDates']);
-			timelineComponents['timelineNavigation'] = timeline.find('.cd-timeline-navigation');
+			timelineComponents['timelineNavigation'] = timeline.find('.timeline-navigation');
 			timelineComponents['eventsContent'] = timeline.children('.events-content');
 
 			// assign a left position to the single events along the timeline
@@ -278,6 +278,6 @@ jQuery(document).ready(function($){
 	// commented function below to test swipe functionality on desktop size devices
 	// function checkMQ() {
 	// 	//check if mobile or desktop device
-	// 	return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
+	// 	return window.getComputedStyle(document.querySelector('.horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
 	// }
 });

@@ -31,7 +31,7 @@ add_action( 'wp_enqueue_scripts','timeline_slider_assets');
 function timeline_slider(){
     ob_start(); ?> 
 
-        <section class="cd-horizontal-timeline">
+        <section class="horizontal-timeline">
             <div class="timeline">
                 <div class="events-wrapper">
                     <div class="events">
@@ -51,7 +51,7 @@ function timeline_slider(){
 
                             <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
                                 <li><a class="timeline-links-<?php echo $counter++; ?> <?php if ($counter == 1) echo 'selected'; ?>" href="#0" data-date="<?php echo get_the_date('j/m/Y'); ?>"><?php echo get_the_date('j M'); ?></a></li>
-                            <?php endwhile; wp_reset_query(); ?>
+                            <?php endwhile; wp_reset_postdata(); ?>
 
                         </ol>
 
@@ -59,7 +59,7 @@ function timeline_slider(){
                     </div>
                 </div>
                     
-                <ul class="cd-timeline-navigation">
+                <ul class="timeline-navigation">
                     <li><a href="#0" class="prev inactive">Prev</a></li>
                     <li><a href="#0" class="next">Next</a></li>
                 </ul>
@@ -88,7 +88,7 @@ function timeline_slider(){
                             <?php the_content(); ?>
                             <a class="button" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
                         </li>
-                    <?php endwhile; wp_reset_query(); ?>
+                    <?php endwhile; wp_reset_postdata(); ?>
 
                 </ol>
 
