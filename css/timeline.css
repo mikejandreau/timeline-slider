@@ -115,6 +115,7 @@ Timeline
   -ms-transform: translateZ(0);
   -o-transform: translateZ(0);
   transform: translateZ(0);
+  box-shadow: none;
 }
 .horizontal-timeline .events a::after {
   /* this is used to create the event spot */
