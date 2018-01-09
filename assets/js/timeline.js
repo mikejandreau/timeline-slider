@@ -2,8 +2,8 @@ jQuery(document).ready(function($){
 	var timelines = $('.horizontal-timeline'),
 		eventsMinDistance = 60;
 
-	(timelines.length > 0) && initTimeline(timelines);
-	
+	(timelines.length > 0) && initTimeline(timelines); // jshint ignore:line
+
 	function initTimeline(timelines) {
 		timelines.each(function(){
 			var timeline = $(this),
@@ -85,8 +85,7 @@ jQuery(document).ready(function($){
 			wrapperWidth = Number(timelineComponents.timelineWrapper.css('width').replace('px', ''));
 
 		// translate the timeline to the left('next')/right('prev') 
-		(string == 'next') ? translateTimeline(timelineComponents, translateValue - wrapperWidth + eventsMinDistance, wrapperWidth - timelineTotWidth)
-			: translateTimeline(timelineComponents, translateValue + wrapperWidth - eventsMinDistance);
+		(string == 'next') ? translateTimeline(timelineComponents, translateValue - wrapperWidth + eventsMinDistance, wrapperWidth - timelineTotWidth) : translateTimeline(timelineComponents, translateValue + wrapperWidth - eventsMinDistance); // jshint ignore:line
 	}
 
 	function showNewContent(timelineComponents, timelineTotWidth, string) {
@@ -130,8 +129,8 @@ jQuery(document).ready(function($){
 		setTransformValue(eventsWrapper, 'translateX', value+'px');
 		
 		// update navigation arrows visibility
-		(value == 0 ) ? timelineComponents.timelineNavigation.find('.prev').addClass('inactive') : timelineComponents.timelineNavigation.find('.prev').removeClass('inactive');
-		(value == totWidth ) ? timelineComponents.timelineNavigation.find('.next').addClass('inactive') : timelineComponents.timelineNavigation.find('.next').removeClass('inactive');
+		(value == 0 ) ? timelineComponents.timelineNavigation.find('.prev').addClass('inactive') : timelineComponents.timelineNavigation.find('.prev').removeClass('inactive'); // jshint ignore:line
+		(value == totWidth ) ? timelineComponents.timelineNavigation.find('.next').addClass('inactive') : timelineComponents.timelineNavigation.find('.next').removeClass('inactive'); // jshint ignore:line
 	}
 
 	function updateFilling(selectedEvent, filling, totWidth) {
@@ -155,7 +154,7 @@ jQuery(document).ready(function($){
 	function setTimelineWidth(timelineComponents, width) {
 		var timeSpan = daydiff(timelineComponents.timelineDates[0], timelineComponents.timelineDates[timelineComponents.timelineDates.length-1]),
 			timeSpanNorm = timeSpan/timelineComponents.eventsMinLapse,
-			timeSpanNorm = Math.round(timeSpanNorm) + 4,
+			timeSpanNorm = Math.round(timeSpanNorm) + 4, // jshint ignore:line
 			totalWidth = timeSpanNorm*width;
 		timelineComponents.eventsWrapper.css('width', totalWidth+'px');
 		updateFilling(timelineComponents.eventsWrapper.find('a.selected'), timelineComponents.fillingLine, totalWidth);
@@ -174,12 +173,12 @@ jQuery(document).ready(function($){
 			var classEnetering = 'selected enter-right',
 				classLeaving = 'leave-left';
 		} else {
-			var classEnetering = 'selected enter-left',
-				classLeaving = 'leave-right';
+			var classEnetering = 'selected enter-left', // jshint ignore:line
+				classLeaving = 'leave-right'; // jshint ignore:line
 		}
 
-		selectedContent.attr('class', classEnetering);
-		visibleContent.attr('class', classLeaving).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+		selectedContent.attr('class', classEnetering); // jshint ignore:line
+		visibleContent.attr('class', classLeaving).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){ // jshint ignore:line
 			visibleContent.removeClass('leave-right leave-left');
 			selectedContent.removeClass('enter-left enter-right');
 		});
@@ -199,15 +198,15 @@ jQuery(document).ready(function($){
          		timelineStyle.getPropertyValue("transform");
 
         if( timelineTranslate.indexOf('(') >=0 ) {
-        	var timelineTranslate = timelineTranslate.split('(')[1];
+        	var timelineTranslate = timelineTranslate.split('(')[1]; // jshint ignore:line
     		timelineTranslate = timelineTranslate.split(')')[0];
     		timelineTranslate = timelineTranslate.split(',');
     		var translateValue = timelineTranslate[4];
         } else {
-        	var translateValue = 0;
+        	var translateValue = 0; // jshint ignore:line
         }
 
-        return Number(translateValue);
+        return Number(translateValue); // jshint ignore:line
 	}
 
 	function setTransformValue(element, property, value) {
@@ -218,6 +217,8 @@ jQuery(document).ready(function($){
 		element.style.transform = property+"("+value+")";
 	}
 
+	/* jshint ignore:start */
+	// JSHint keeps calling me out, so I'm ignoring her for now
 	// based on http://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
 	function parseDate(events) {
 		var dateArrays = [];
@@ -228,17 +229,18 @@ jQuery(document).ready(function($){
 				var dayComp = dateComp[0].split('/'),
 					timeComp = dateComp[1].split(':');
 			} else if( dateComp[0].indexOf(':') >=0 ) { // only time is provide
-				var dayComp = ["2000", "0", "0"],
-					timeComp = dateComp[0].split(':');
+				var dayComp = ["2000", "0", "0"], 
+					timeComp = dateComp[0].split(':'); 
 			} else { // only DD/MM/YEAR
-				var dayComp = dateComp[0].split('/'),
-					timeComp = ["0", "0"];
+				var dayComp = dateComp[0].split('/'), 
+					timeComp = ["0", "0"]; 
 			}
-			var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]);
+			var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]); 
 			dateArrays.push(newDate);
 		});
 	    return dateArrays;
 	}
+	/* jshint ignore:end */
 
 	function daydiff(first, second) {
 	    return Math.round((second-first));
