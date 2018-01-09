@@ -12,17 +12,17 @@
 */
 
 // Custom post type for Portfolio Items 
-require plugin_dir_path( __FILE__ ) . '/inc/custom-post-timeline-event.php';
+require plugin_dir_path( __FILE__ ) . '/assets/inc/custom-post-timeline-event.php';
 
 // Register styles and scripts
 function timeline_slider_assets() {
-    wp_register_style('timeline_slider_styles', plugins_url('css/timeline.css',__FILE__ ));
+    wp_register_style('timeline_slider_styles', plugins_url('assets/css/timeline.css',__FILE__ ));
     wp_enqueue_style('timeline_slider_styles');
 
-    wp_register_script( 'timeline_slider_mobile', plugins_url('js/jquery.mobile.custom.min.js', __FILE__), array('jquery'),'1.1', true);
+    wp_register_script( 'timeline_slider_mobile', plugins_url('assets/js/jquery.mobile.custom.min.js', __FILE__), array('jquery'),'1.1', true);
     wp_enqueue_script('timeline_slider_mobile');
 
-    wp_register_script( 'timeline_slider_scripts', plugins_url('js/timeline.js', __FILE__), array('jquery'),'1.1', true);
+    wp_register_script( 'timeline_slider_scripts', plugins_url('assets/js/timeline.min.js', __FILE__), array('jquery'),'1.1', true);
     wp_enqueue_script('timeline_slider_scripts');
 }
 add_action( 'wp_enqueue_scripts','timeline_slider_assets');
