@@ -22,7 +22,7 @@ function timeline_slider_assets() {
     wp_register_script( 'timeline_slider_mobile', plugins_url('assets/js/jquery.mobile.custom.min.js', __FILE__), array('jquery'),'1.1', true);
     wp_enqueue_script('timeline_slider_mobile');
 
-    wp_register_script( 'timeline_slider_scripts', plugins_url('assets/js/timeline.min.js', __FILE__), array('jquery'),'1.1', true);
+    wp_register_script( 'timeline_slider_scripts', plugins_url('assets/js/timeline.js', __FILE__), array('jquery'),'1.1', true);
     wp_enqueue_script('timeline_slider_scripts');
 }
 add_action( 'wp_enqueue_scripts','timeline_slider_assets');
@@ -30,6 +30,23 @@ add_action( 'wp_enqueue_scripts','timeline_slider_assets');
 // Shortcode to display slider on any page or post
 function timeline_slider(){
     ob_start(); ?> 
+
+
+
+<?php 
+
+$query = new WP_Query(array(
+    'post_type' => 'Timeline'
+));
+if( $query->have_posts() ){
+    echo 'we have posts';
+} else {
+    echo 'no posts found, maybe log in and make some';
+    /*echo '<a href="' . esc_url( home_url( '/' ) ) . '/wp-admin/edit.php?post_type=timeline">Go make one</a>';*/
+}
+wp_reset_postdata();
+
+?>
 
         <section class="horizontal-timeline">
             <div class="timeline">
