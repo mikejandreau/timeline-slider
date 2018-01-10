@@ -8,7 +8,8 @@ I haven't found a good way to do this yet programmatically, but if you want to a
 ```html
 <!-- Content area of your post -->
 <p>Here's some post content, blah blah.</p>
-<p>Some more content, and return link goes below like so:</p>
+<p>Some more content, and return link goes below.</p>
+
 <a class="timeline-return" href="/your-timeline-url/">Back to Timeline</a>
 ```
 
