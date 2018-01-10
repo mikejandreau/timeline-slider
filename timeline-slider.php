@@ -31,29 +31,19 @@ add_action( 'wp_enqueue_scripts','timeline_slider_assets');
 function timeline_slider(){
     ob_start(); ?> 
 
-
-
-<?php 
-
-$query = new WP_Query(array(
-    'post_type' => 'Timeline'
-));
-if( $query->have_posts() ){
-    echo 'we have posts';
-} else {
-    echo 'no posts found, maybe log in and make some';
-    /*echo '<a href="' . esc_url( home_url( '/' ) ) . '/wp-admin/edit.php?post_type=timeline">Go make one</a>';*/
-}
-wp_reset_postdata();
-
-?>
+    <?php 
+        $query = new WP_Query(array(
+            'post_type' => 'Timeline'
+        ));
+        if( $query->have_posts() ){
+    ?>
 
         <section class="horizontal-timeline">
+
             <div class="timeline">
                 <div class="events-wrapper">
                     <div class="events">
                         <ol>
-
                             <?php
                                 $counter = 0; // Counter for posts
                                 $getThisMany = -1; // Number of posts to pull
@@ -65,26 +55,21 @@ wp_reset_postdata();
                                     'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
                                 ));
                             ?>
-
                             <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
                                 <li><a class="timeline-links-<?php echo $counter++; ?> <?php if ($counter == 1) echo 'selected'; ?>" href="#0" data-date="<?php echo get_the_date('j/m/Y'); ?>"><?php echo get_the_date('j M'); ?></a></li>
                             <?php endwhile; wp_reset_postdata(); ?>
-
                         </ol>
-
                         <span class="filling-line" aria-hidden="true"></span>
                     </div>
                 </div>
-                    
                 <ul class="timeline-navigation">
                     <li><a href="#0" class="prev inactive">Prev</a></li>
                     <li><a href="#0" class="next">Next</a></li>
                 </ul>
-            </div><?php /* /timeline */ ?>
+            </div>
 
             <div class="events-content">
                 <ol>
-
                     <?php
                         $timelineCounter = 0; // Counter for posts
                         $timelineGetThisMany = -1; // Number of posts to pull
@@ -96,7 +81,6 @@ wp_reset_postdata();
                             'post__not_in' => get_option("sticky_posts"), // Ignore sticky posts for this particular query
                         ));
                     ?>
-
                     <?php while ($timelineRecentPosts->have_posts()) : $timelineRecentPosts->the_post(); ?>
                         <li class="timeline-content-<?php echo $timelineCounter++; ?> <?php if ($timelineCounter == 1) echo 'selected'; ?>" data-date="<?php echo get_the_date('j/m/Y'); ?>">
                             <?php /* <h2><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a></h2> */ ?>
@@ -106,11 +90,17 @@ wp_reset_postdata();
                             <a class="button" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
                         </li>
                     <?php endwhile; wp_reset_postdata(); ?>
-
                 </ol>
+            </div>
 
-            </div><?php /* /events-content */ ?>
-        </section><?php /* /horizontal-timeline */ ?>
+        </section>
+
+    <?php 
+        } else {
+            echo 'no posts found, maybe log in and make some<br><a href="/wp-admin/edit.php?post_type=timeline">Go make one</a>';
+        }
+        wp_reset_postdata();
+    ?>
 
     <?php return ob_get_clean();
 }
