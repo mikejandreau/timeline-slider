@@ -1,14 +1,28 @@
-// Timeline styles
+// Colors
+$color_brand: #002878;
+$color_white: #f8f8f8;
+$color_ltgray: #dfdfdf;
+$color_dkgray: #383838;
 
-// Variables
+// Breakpoints
 $width_tablet: 768px;
 $width_desktop: 1200px;
-$color_litegray: #dfdfdf;
 
-// Responsive mixins
+// Responsive mixins that use breakpoint variables - example usage is below
+//
+//  .class {
+//    font-size: 20px;
+//
+//    @include tablet {
+//      font-size: 30px;
+//    }
+//  }
+//
+
 @mixin tablet   { @media (min-width: #{$width_tablet})  { @content; } }
 @mixin desktop   { @media (min-width: #{$width_desktop})  { @content; } }
 
+// Timeline styles
 .horizontal-timeline {
   opacity: 0;
   margin: 2em auto;
@@ -54,7 +68,7 @@ $color_litegray: #dfdfdf;
     left: 0;
     top: 49px;
     height: 2px;
-    background: $color_litegray;
+    background: $color_ltgray;
     transition: transform 0.4s;
 
     a {
@@ -64,7 +78,7 @@ $color_litegray: #dfdfdf;
       text-align: center;
       font-size: 1.3rem;
       padding-bottom: 15px;
-      color: #383838;
+      color: $color_dkgray;
       transform: translateZ(0); // fix bug on Safari - text flickering while timeline translates 
       box-shadow: none;
 
@@ -79,27 +93,27 @@ $color_litegray: #dfdfdf;
         height: 12px;
         width: 12px;
         border-radius: 50%;
-        border: 2px solid $color_litegray;
-        background-color: #f8f8f8;
+        border: 2px solid $color_ltgray;
+        background-color: $color_white;
         transition: background-color 0.3s, border-color 0.3s;
       }
 
       &:hover::after {
-        background-color: #002878;
-        border-color: #002878;
+        background-color: $color_brand;
+        border-color: $color_brand;
       }
 
       &.selected {
         pointer-events: none;
 
         &::after {
-          background-color: #002878;
-          border-color: #002878;
+          background-color: $color_brand;
+          border-color: $color_brand;
         }
       }
 
       &.older-event::after {
-        border-color: #002878;
+        border-color: $color_brand;
       }
 
       .no-touch & {
@@ -116,7 +130,7 @@ $color_litegray: #dfdfdf;
     top: 0;
     height: 100%;
     width: 100%;
-    background-color: #002878;
+    background-color: $color_brand;
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.3s;
@@ -169,7 +183,6 @@ $color_litegray: #dfdfdf;
     h2 {
       font-weight: bold;
       font-size: 2.6rem;
-      // font-family: "Playfair Display", serif; 
       font-weight: 700;
       line-height: 1.2;
 
@@ -177,11 +190,11 @@ $color_litegray: #dfdfdf;
         font-size: 7rem;
       }
     }
-    
+
     em {
       display: block;
       font-style: italic;
-      // margin: 10px auto; 
+      margin: 10px auto; 
       line-height: 1.6;
 
       &::before {
@@ -192,7 +205,7 @@ $color_litegray: #dfdfdf;
         font-size: 2rem;
       }
     }
-    
+
     p {
       font-size: 1.4rem;
       line-height: 1.6;
@@ -235,10 +248,10 @@ $color_litegray: #dfdfdf;
         animation-direction: reverse;
       }
 
-      & > * {
-        max-width: 100%;
-        margin: 0 auto 10px;
-      }
+      // & > * {
+      //   max-width: 100%;
+      //   margin: 0 auto 10px;
+      // }
     }
   }
 
@@ -252,7 +265,7 @@ $color_litegray: #dfdfdf;
     height: 34px;
     width: 34px;
     border-radius: 50%;
-    border: 2px solid $color_litegray;
+    border: 2px solid $color_ltgray;
     overflow: hidden; // replace text with an icon 
     color: transparent;
     text-indent: 100%;
@@ -295,14 +308,20 @@ $color_litegray: #dfdfdf;
       }
     }
   }
+
+  // this hides return link on main timeline page 
+  .timeline-return {
+    display: none;
+  }
 }
 
+
 .no-touch .timeline-navigation a:hover {
-  border-color: #002878;
+  border-color: $color_brand;
 }
 
 .no-touch .timeline-navigation a.inactive:hover {
-  border-color: $color_litegray;
+  border-color: $color_ltgray;
 }
 
 // keyframes
