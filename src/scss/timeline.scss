@@ -25,11 +25,11 @@ $width_desktop: 1200px;
 // Timeline styles
 .horizontal-timeline {
   opacity: 0;
-  margin: 2em auto;
+  margin: 0 auto 2em;
   transition: opacity 0.2s;
 
   @include desktop {
-    margin: 6em auto;
+    margin: 0 auto 6em;
   }
 
   // never visible - used in jQuery to check current MQ 
