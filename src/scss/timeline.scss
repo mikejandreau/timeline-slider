@@ -2,6 +2,7 @@
 $color_brand: #002878;
 $color_white: #f8f8f8;
 $color_ltgray: #dfdfdf;
+$color_mdgray: #959595;
 $color_dkgray: #383838;
 
 // Breakpoints
@@ -59,6 +60,7 @@ $width_desktop: 1200px;
   ol {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   // this is the grey line/timeline, width will be set using JavaScript
@@ -182,20 +184,21 @@ $width_desktop: 1200px;
 
     h2 {
       font-weight: bold;
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       font-weight: 700;
       line-height: 1.2;
+      margin: 0 0 1rem;
 
       @include tablet {
-        font-size: 7rem;
+        font-size: 4.8rem;
       }
     }
 
     em {
       display: block;
       font-style: italic;
-      margin: 10px auto; 
       line-height: 1.6;
+      margin: 0 0 1rem;
 
       &::before {
         content: '- ';
@@ -207,12 +210,13 @@ $width_desktop: 1200px;
     }
 
     p {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       line-height: 1.6;
-      color: #959595;
+      color: $color_mdgray;
+      margin: 0 0 1rem;
 
       @include tablet {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
     }
 
