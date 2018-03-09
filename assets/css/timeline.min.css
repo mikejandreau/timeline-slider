@@ -20,9 +20,9 @@
 .horizontal-timeline .events-wrapper::after,.horizontal-timeline .events-wrapper::before{content:'';position:absolute;z-index:2;top:0;height:100%;width:20px}
 .horizontal-timeline .events-content{position:relative;width:100%;margin:2em 0;overflow:hidden;-webkit-transition:height .4s;transition:height .4s}
 .horizontal-timeline .events-content h2{font-weight:bold;font-size:2.4rem;font-weight:700;line-height:1.2;margin:0 0 1rem}
-.horizontal-timeline .events-content em{display:block;font-style:italic;line-height:1.6;margin:0 0 1rem}
-.horizontal-timeline .events-content em::before{content:'- '}
-.horizontal-timeline .events-content p{font-size:1.2rem;line-height:1.6;color:#959595;margin:0 0 1rem}
+.horizontal-timeline .events-content span{display:inline-block;line-height:1.6;margin:0 0 1rem}
+.horizontal-timeline .events-content span::after{content:'-';margin:0 1rem}
+.horizontal-timeline .events-content p{font-size:1.2rem;line-height:1.6;color:#959595;margin:0 0 2rem}
 .horizontal-timeline .events-content li{position:absolute;z-index:1;width:100%;left:0;top:0;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%);padding:0;opacity:0;-webkit-animation-duration:.4s;animation-duration:.4s;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}
 .horizontal-timeline .events-content li.selected{position:relative;z-index:2;opacity:1;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}
 .horizontal-timeline .events-content li.enter-right,.horizontal-timeline .events-content li.leave-right{-webkit-animation-name:timeline-transition-right;animation-name:timeline-transition-right}
@@ -43,7 +43,6 @@ img{display:block;width:100%;max-width:100%;margin-top:20px}
 .img-main,.img-thumb{padding:0 10px}
 .img-thumb{width:33.333333%;float:right}
 @media(min-width:768px){.horizontal-timeline .events-content h2{font-size:4.8rem}
-.horizontal-timeline .events-content em{font-size:2rem}
 .horizontal-timeline .events-content p{font-size:1.6rem}
 }@media(min-width:1200px){.horizontal-timeline{margin:0 auto 6em}
 .horizontal-timeline::before{content:'desktop'}
