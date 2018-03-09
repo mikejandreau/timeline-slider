@@ -56,7 +56,7 @@ function timeline_slider(){
                                 ));
                             ?>
                             <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-                                <li><a class="timeline-links-<?php echo $counter++; ?> <?php if ($counter == 1) echo 'selected'; ?>" href="#0" data-date="<?php echo get_the_date('j/m/Y'); ?>"><?php echo get_the_date('j M'); ?></a></li>
+                                <li><a class="timeline-links-<?php echo $counter++; ?> <?php if ($counter == 1) echo 'selected'; ?>" href="#0" data-date="<?php echo get_the_date('j/m/Y'); ?>"><?php echo get_the_date('Y'); ?></a></li>
                             <?php endwhile; wp_reset_postdata(); ?>
                         </ol>
                         <span class="filling-line" aria-hidden="true"></span>
@@ -84,9 +84,9 @@ function timeline_slider(){
                     <?php while ($timelineRecentPosts->have_posts()) : $timelineRecentPosts->the_post(); ?>
                         <li class="timeline-content-<?php echo $timelineCounter++; ?> <?php if ($timelineCounter == 1) echo 'selected'; ?>" data-date="<?php echo get_the_date('j/m/Y'); ?>">
                             <?php /* <h2><a href="<?php echo get_permalink( get_the_ID() );?>"><?php echo get_the_title(); ?></a></h2> */ ?>
-                            <h2><?php echo get_the_title(); ?></h2>
-                            <em><?php echo get_the_date('M j, Y'); ?></em>
-                            <?php the_content(); ?>
+                            <h2><span><?php echo get_the_date('Y'); ?></span><?php echo get_the_title(); ?></h2>
+                            
+                            <?php the_excerpt(); ?>
                             <a class="button" href="<?php echo get_permalink( get_the_ID() );?>">Read More</a>
                         </li>
                     <?php endwhile; wp_reset_postdata(); ?>
