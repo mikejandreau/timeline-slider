@@ -194,26 +194,28 @@ $width_desktop: 1200px;
       }
     }
 
-    em {
-      display: block;
-      font-style: italic;
+    span {
+      display: inline-block;
+      // font-style: italic;
       line-height: 1.6;
       margin: 0 0 1rem;
 
-      &::before {
-        content: '- ';
+      &::after {
+        content: '-';
+        // background: red;
+        margin: 0 1rem;
       }
 
-      @include tablet {
-        font-size: 2rem;
-      }
+      // @include tablet {
+      //   font-size: 2rem;
+      // }
     }
 
     p {
       font-size: 1.2rem;
       line-height: 1.6;
       color: $color_mdgray;
-      margin: 0 0 1rem;
+      margin: 0 0 2rem;
 
       @include tablet {
         font-size: 1.6rem;
